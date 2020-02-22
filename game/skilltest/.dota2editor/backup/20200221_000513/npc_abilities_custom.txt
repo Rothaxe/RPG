@@ -1,0 +1,418 @@
+// Dota2 Editor
+// Get latest version: https://github.com/zombieJ/nw-dota2editor
+
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	"Allez"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"puck_illusory_orb"
+		"ScriptFile"	"heroes/Lauren/Allez.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.1 0.1 0.1 0.1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"12.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"150 150 150 150"
+		"AbilityCastRange"	"1000"
+		// Data driven
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_puck/puck_illusory_orb.vpcf"
+			"soundfile"	"Hero_Puck.Illusory_Orb_Damage"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius(unuse)"	"225"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"Allez_distance"	"1800 1800 1800 1800"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"Allez_speed"	"600 600 600 600"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"Allez_width_initial"	"450"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"Allez_width_end"	"450"
+			}
+			// Extra variables
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"Allez_damage"	"70 140 210 280"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_times"	"7 6 5 4"
+			}
+		}
+		// Damage.
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"	"70 140 210 280"
+	}
+
+	"Parry"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"nyx_assassin_spiked_carapace"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"	"12"
+		"AbilityManaCost"	"75 75 75 75"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_nyx_assassin/nyx_assassin_spiked_carapace.vpcf"
+			"particle"	"particles/units/heroes/hero_huskar/huskar_berserkers_blood_glow.vpcf"
+		}
+		// Datadriven
+		// -------------------------------------------------------------------------------------------------------------
+		"OnUpgrade"
+		{
+			// ApplyLuaModifier
+			"RunScript"
+			{
+				"ModifierName"	"Modifier_Parry"
+				"ScriptFile"	"heroes/Lauren/Parry.lua"
+				"Function"	"ApplyLuaModifier"
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ModifierName"	"Modifier_Parry"
+				"ScriptFile"	"heroes/Lauren/Parry.lua"
+				"Function"	"Active"
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_stacks"	"2 4 6 8"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduced_damage"	"-5 -7 -10 -15"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"recovery_time"	"10.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"hurt_health_ceiling"	"1.00"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"hurt_health_floor"	"0.00"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"hurt_health_step"	"0.10"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"active_duration"	"10"
+			}
+		}
+	}
+
+	"Twine"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"treant_overgrowth"
+		"ScriptFile"	"heroes/Lauren/Twine.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"	"12"
+		"AbilityManaCost"	"175 150 125 100"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_per_stack"	"1 1 1 1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_per_sec"	"70 140 210 280"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"200 300 400 500"
+			}
+		}
+	}
+
+	"Dogged_Warcry"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"nevermore_requiem"
+		"ScriptFile"	"heroes/Lauren/Dogged_Warcry.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityCastPoint"	"2"
+		"AbilityCooldown"	"150"
+		"AbilityManaCost"	"225"
+		"precache"
+		{
+			"soundfile"	"Hero_Nevermore.RequiemOfSouls"
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_a.vpcf"
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls.vpcf"
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_line.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"line_count"	"8 10 12 16"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage(unuse)"	"140"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"lines_starting_width"	"450"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"lines_end_width"	"450"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"travel_distance"	"1800 1800 1800 1800"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"lines_travel_speed"	"600 600 600 600"
+			}
+		}
+	}
+
+	"Lunge"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"pangolier_swashbuckle"
+		"ScriptFile"	"heroes/Lauren/Lunge.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCooldown"	"12"
+		"AbilityManaCost"	"80 90 100 110"
+		"precache"
+		{
+			"soundfile"	"Hero_Pangolier.Swashbuckle.Cast"
+			"particle"	"particles/units/heroes/hero_pangolier/pangolier_swashbuckler_dash.vpcf"
+			"soundfile"	"Hero_Pangolier.Swashbuckle.Damage"
+			"particle"	"particles/units/heroes/hero_pangolier/pangolier_swashbuckler.vpcf"
+			"particle"	"particles/generic_gameplay/generic_hit_blood.vpcf"
+			"soundfile"	"Hero_Pangolier.Swashbuckle"
+			"soundfile"	"Hero_Pangolier.Swashbuckle.Damage"
+			"particle"	"particles/units/heroes/hero_lina/lina_spell_light_strike_array_ray_team.vpcf"
+			"particle"	"particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+			"soundfile"	"Ability.LightStrikeArray"
+			"particle"	"particles/econ/items/legion/legion_fallen/legion_fallen_press.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"dash_range"	"1000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range"	"600"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"dash_speed"	"800"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"24 42 60 78"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"start_radius"	"450"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"end_radius(unuse)"	"450"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_interval"	"0.1"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"strikes"	"4 5 6 7"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"buff_duration"	"2"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_increased"	"0.5"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range_increased"	"150 200 250 300"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"explosion_damage"	"110 195 300 425"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"explosion_stun_time"	"1.75 2.25 3 4"
+			}
+			"14"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"explosion_radius"	"500"
+			}
+			"15"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"heal_amount"	"100 120 150 200"
+			}
+		}
+	}
+
+	"ability_passive"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
+		// 缓存特效
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_ursa/ursa_overpower_buff.vpcf"
+		}
+		"Modifiers"
+		{
+			"modifier_ability_passive"
+			{
+				"IsHidden"	"1"
+				"Passive"	"1"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"	"particles/units/heroes/hero_ursa/ursa_overpower_buff.vpcf"
+						"EffectAttachType"	"start_at_customorigin"
+						"Target"	"CASTER"
+						"ControlPointEntities"
+						{
+							// CP0
+							"CASTER"	"attach_head"
+							// CP1
+							"CASTER"	"attach_hitloc"
+							// CP2
+							"CASTER"	"attach_hitloc"
+							// CP3
+							"CASTER"	"attach_hitloc"
+						}
+					}
+				}
+			}
+		}
+	}
+
+	"ability_passive2"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
+		"precache"
+		{
+			"particle"	"particles/econ/courier/courier_greevil_green/courier_greevil_green_ambient_3.vpcf"
+		}
+		"Modifiers"
+		{
+			"modifier_ability_passive"
+			{
+				"IsHidden"	"1"
+				"Passive"	"1"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"	"particles/econ/courier/courier_greevil_green/courier_greevil_green_ambient_3.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"	"CASTER"
+					}
+				}
+			}
+		}
+	}
+}
