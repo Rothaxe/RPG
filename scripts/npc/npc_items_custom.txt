@@ -1,0 +1,166 @@
+// Dota2 Editor
+// Get latest version: https://github.com/zombieJ/nw-dota2editor
+
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	// 合成配方：熔岩之锤*2
+	"item_lava_caller"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"item_desolator"
+		"ScriptFile"	"items/item_lava_caller"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"ID"	"1500"
+		"ItemQuality"	"epic"
+		"Model"	"models/props_gameplay/aghanim_scepter.vmdl"
+		"Effect"	"particles/neutral_fx/neutral_item_drop_lvl2.vpcf"
+		"ItemCost"	"10"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemPurchasable"	"1"
+		"ItemKillable"	"1"
+		"SecretShop"	"1"
+		"ItemShopTags"	"artifact"
+		"ItemRequirements"	{}
+		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_agility"	"50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_intellect"	"40"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"200"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_greendamage"	"500"
+			}
+		}
+	}
+
+	"item_lava_armor"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"blade_mail"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"ID"	"1501"
+		"ItemQuality"	"artifact"
+		"Model"	"models/items/dragon_knight/firedragon_shoulder/firedragon_shoulder.vmdl"
+		"Effect"	"particles/neutral_fx/neutral_item_drop_lvl2.vpcf"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemAlertable"	"1"
+		"ItemRequirements"	{}
+	}
+
+	"item_lava_ring"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"item_heart"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1502"
+		"Model"	"models/props_items/bloodstone.vmdl"
+		"Effect"	"particles/neutral_fx/neutral_item_drop_lvl2.vpcf"
+		"ItemRequirements"	{}
+	}
+
+	"item_lava_hammer"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"mithril_hammer"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"ID"	"1503"
+		"ItemQuality"	"rare"
+		"Model"	"models/props_gameplay/aghanim_scepter.vmdl"
+		"ItemShopTags"	"111"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+	}
+
+	"item_recipe_lava_caller"
+	{
+		"BaseClass"	"item_recipe_arcane_boots"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1504"
+		"ItemQuality"	"rare"
+		"ItemCost"	"0"
+		"ItemShopTags"	"111"
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_lava_caller"
+		"ItemRequirements"
+		{
+			"01"	"item_lava_hammer;item_lava_hammer"
+		}
+	}
+
+	"item_initial_equip_lottery"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"mithril_hammer"
+		"ScriptFile"	"items/item_initial_equip_lottery"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityChannelTime"	"2"
+		"ID"	"1506"
+		"ItemQuality"	"rare"
+		"Model"	"models/props_gameplay/treasure_chest_gold.vmdl"
+		"ItemCost"	"1"
+		"ItemPurchasable"	"1"
+		"ItemShopTags"	"111"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+	}
+
+	"item_TrueGold"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_keeper_of_the_light_illuminate"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"ID"	"1505"
+		"ItemCastOnPickup"	"0"
+		"Model"	"models/props_gameplay/gold_bag.vmdl"
+		"ItemPurchasable"	"0"
+		"ItemInitialCharges"	"0"
+		"ItemStackable"	"1"
+		"ItemRequirements"	{}
+		"precache"
+		{
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Puck.Illusory_Orb_Damage"
+			}
+			"GrantXPGold"
+			{
+				"Target"	"CASTER"
+				"SplitEvenly"	"0"
+				"GoldAmount"	"5"
+				"ReliableGold"	"1"
+			}
+		}
+	}
+}
